@@ -1,3 +1,5 @@
+package model;
+
 
 /**
  *
@@ -12,8 +14,9 @@ public class Patient extends User {
     private double height;
     private String blood;
 
-    Patient(String name, String email) {
+   public Patient(String name, String email) {
         super(name,email);
+        //Mas instrucciones
     }
 
     public void setWeight(double weight) {  //Setter - Establecer valor al atributo
@@ -47,6 +50,11 @@ public class Patient extends User {
 
     public void setBlood(String blood) {
         this.blood = blood;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nAge " + birthday + "\nWeight: " + getWeight() + "\nHeight: " + getHeight() + "\nBlood: " + blood;
     }
 
 }

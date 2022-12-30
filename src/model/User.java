@@ -1,3 +1,5 @@
+package model;
+
 /**
  *
  * @author giova
@@ -57,6 +59,12 @@ public class User {
         else if (phoneNumber.length() == 8){
             this.phoneNumber = phoneNumber;
         }
+    }
+
+    @Override   //Sobreescritura de metodos, cambia la funcion del sout.
+    public String toString() {
+        return "User: " + name + ", Email: " + email + // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                "\nAddress: "+address+". Phone: " +phoneNumber;
     }
     
 }
