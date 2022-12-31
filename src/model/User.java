@@ -4,7 +4,7 @@ package model;
  *
  * @author giova
  */
-public class User {
+public abstract class User {
     private int id;
     private String name;
     private String email;
@@ -63,8 +63,10 @@ public class User {
 
     @Override   //Sobreescritura de metodos, cambia la funcion del sout.
     public String toString() {
-        return "User: " + name + ", Email: " + email + // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return "User: " + name + ", Email: " + email +
                 "\nAddress: "+address+". Phone: " +phoneNumber;
     }
     
+        public abstract void showDataUser();
+            
 }

@@ -1,8 +1,12 @@
 package model;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,17 +29,13 @@ public class Doctor extends User {
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
     }
-
-    
-    
-
-    
+ 
     ArrayList<AvailableAppointment> availableAppointment = new ArrayList<>();
-    public void addAvailableAppointment(Date date, String time){
+    public void addAvailableAppointment(String date, String time){
         availableAppointment.add(new Doctor.AvailableAppointment(date, time));
     }
     
-    public ArrayList<AvailableAppointment> getAvailableAppointment(){
+    public ArrayList<AvailableAppointment> getAvailableAppointments(){
         return availableAppointment;
     }
     
@@ -44,14 +44,25 @@ public class Doctor extends User {
             return super.toString() + "\nSpeciality: " +speciality+ "\nAvailable: " + availableAppointment.toString();
         }
 
+    @Override
+    public void showDataUser() {
+        System.out.println("Empleado del Hospital: Cruz roja");
+        System.out.println("Departamento: Cancerologia");
+    }
+
     public static class AvailableAppointment {  //Clase Anidada.
 
         private int id_availableAppointment;
         private Date date;
         private String time;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        public AvailableAppointment(Date date, String time) {
-            this.date = date;
+        public AvailableAppointment(String date, String time) {
+            try {
+                this.date = format.parse(date);
+            } catch (ParseException ex) {
+                Logger.getLogger(Doctor.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.time = time;
         }
 
@@ -65,6 +76,10 @@ public class Doctor extends User {
 
         public Date getDate() {
             return date;
+        }
+        
+        public String getDate(String DATE) {
+            return format.format(date);
         }
 
         public void setDate(Date date) {
