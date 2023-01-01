@@ -1,6 +1,5 @@
 package model;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,13 +12,13 @@ import java.util.logging.Logger;
  * @author giova
  */
 public class Doctor extends User {
+
     //Atributo
     private String speciality;
-    
-   public Doctor(String name, String email) {
-        super(name,email);
-        System.out.println("El nombre del doctor asignado es: " + name);   
-        this.speciality = speciality;
+    private ArrayList<AvailableAppointment> availableAppointment = new ArrayList<>(); // Array de fechas disponibles
+
+    public Doctor(String name, String email) {
+        super(name, email);
     }
 
     public String getSpeciality() {
@@ -29,20 +28,19 @@ public class Doctor extends User {
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
     }
- 
-    ArrayList<AvailableAppointment> availableAppointment = new ArrayList<>();
-    public void addAvailableAppointment(String date, String time){
+
+    public void addAvailableAppointment(String date, String time) {
         availableAppointment.add(new Doctor.AvailableAppointment(date, time));
     }
-    
-    public ArrayList<AvailableAppointment> getAvailableAppointments(){
+
+    public ArrayList<AvailableAppointment> getAvailableAppointments() {
         return availableAppointment;
     }
-    
+
     @Override
-        public String toString() {
-            return super.toString() + "\nSpeciality: " +speciality+ "\nAvailable: " + availableAppointment.toString();
-        }
+    public String toString() {
+        return super.toString() + "\nSpeciality: " + speciality + "\nAvailable: " + availableAppointment.toString();
+    }
 
     @Override
     public void showDataUser() {
@@ -74,11 +72,11 @@ public class Doctor extends User {
             this.id_availableAppointment = id_availableAppointment;
         }
 
-        public Date getDate() {
+        public Date getDate(String DATE) {
             return date;
         }
-        
-        public String getDate(String DATE) {
+
+        public String getDate() {
             return format.format(date);
         }
 
@@ -96,8 +94,8 @@ public class Doctor extends User {
 
         @Override
         public String toString() {
-            return "Available Appointment \nDate: "+ date + "\nTime: "+ time;
+            return "Available Appointment \nDate: " + date + "\nTime: " + time;
         }
-        
+
     }
 }
